@@ -98,11 +98,6 @@ pip install -r requirements.txt
 pip install torch numpy matplotlib requests tqdm pyyaml
 ```
 
-### 步骤2: 测试模型（可选）
-
-```bash
-python test_model.py
-```
 
 ### 步骤3: 开始训练
 
@@ -172,12 +167,6 @@ python src/train.py --config configs/base.yaml --seed 42
 python src/train.py --config configs/ablation_2heads.yaml --seed 42
 ```
 
-### 预期结果
-
-| 配置 | 验证损失 | 验证困惑度 | 说明 |
-|------|---------|----------|------|
-| 4 heads | ~1.35 | ~3.86 | 基础配置 |
-| 2 heads | ~1.42 | ~4.14 | 性能下降 |
 
 **结论**: 更多的注意力头提升了模型性能，验证了多头机制的有效性。
 
@@ -203,12 +192,8 @@ python src/train.py --config configs/ablation_2heads.yaml --seed 42
 
 ## 💻 硬件要求
 
-- **最低**: CPU, 8GB RAM
+- **最低**: CPU, 16GB RAM
 - **推荐**: NVIDIA GPU (2GB+ VRAM), 16GB RAM
-
-**训练时间**:
-- GPU (RTX 3060): ~15-20分钟 (30 epochs)
-- CPU: ~2-3小时 (30 epochs)
 
 ## 🔧 训练技巧
 
@@ -239,103 +224,6 @@ def generate_text(model, prompt, max_len=200):
         prompt = cat(prompt, next_token)  # 追加
     return prompt
 ```
-
-## 🎓 作业评分对照
-
-| 要求 | 分数 | 完成情况 |
-|------|-----|---------|
-| 实现核心组件（Attention, FFN, LayerNorm, 位置编码） | 60-70 | ✅ |
-| 训练+消融实验+可视化 | 70-80 | ✅ |
-| 实现Decoder结构 | 80-90 | ✅ |
-| 代码开源+完整README | 10 | ✅ |
-
-**说明**: Decoder-Only架构完全满足Decoder要求，因为它包含：
-- Masked Multi-Head Self-Attention（带causal mask）
-- Position-wise Feed-Forward Network
-- Residual Connections + Layer Normalization
-- Positional Encoding
-
-## 🔍 为什么使用Decoder-Only？
-
-对于语言建模任务，Decoder-Only比Encoder-Decoder更合适：
-
-| 特性 | Decoder-Only | Encoder-Decoder |
-|------|-------------|----------------|
-| 复杂度 | 简单 | 复杂 |
-| 适合语言建模 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
-| 训练速度 | 快 | 慢 |
-| 与现代LLM一致 | ✅ (GPT系列) | ❌ |
-| 满足作业要求 | ✅ | ✅ |
-
-## 🌟 模型架构
-
-```
-Input Tokens
-    ↓
-Token Embedding + Positional Encoding
-    ↓
-┌─────────────────────────────────┐
-│  Decoder Block 1                │
-│  ├── Masked Self-Attention      │  ← Causal Mask
-│  ├── Residual + LayerNorm       │
-│  ├── Feed-Forward Network       │
-│  └── Residual + LayerNorm       │
-└─────────────────────────────────┘
-    ↓
-┌─────────────────────────────────┐
-│  Decoder Block 2                │
-│  ...                            │
-└─────────────────────────────────┘
-    ↓
-    ... (重复n_layers次)
-    ↓
-Final LayerNorm
-    ↓
-Linear Projection → Vocabulary
-    ↓
-Output Logits
-```
-
-## 📚 参考文献
-
-1. Vaswani, A., et al. (2017). **Attention is All You Need**. *NeurIPS*.
-2. Radford, A., et al. (2018). **Improving Language Understanding by Generative Pre-Training**.
-3. Karpathy, A. char-rnn: Multi-layer Recurrent Neural Networks. *GitHub*.
-
-## 🔄 可复现性
-
-所有实验都可以通过固定随机种子复现：
-
-```bash
-python src/train.py --config configs/base.yaml --seed 42
-```
-
-**环境**:
-- Python 3.8+
-- PyTorch 2.0+
-- 详见 `requirements.txt`
-
-## ❓ 常见问题
-
-**Q: 为什么不使用Encoder-Decoder？**  
-A: 对于语言建模（预测下一个token），Decoder-Only更简单高效。Encoder-Decoder适合翻译、摘要等seq2seq任务。
-
-**Q: Decoder-Only满足作业的Decoder要求吗？**  
-A: 完全满足！它实现了完整的Decoder Block结构（Masked Attention + FFN + Residual + LayerNorm）。
-
-**Q: 训练很慢怎么办？**  
-A: 使用`configs/small.yaml`快速测试，或减少epochs/batch_size。
-
-**Q: 内存不足？**  
-A: 降低`batch_size`或使用更小的模型配置。
-
-## 📧 联系方式
-
-如有问题，请提交Issue或联系作者。
-
-## 📄 许可证
-
-MIT License
 
 ---
 
