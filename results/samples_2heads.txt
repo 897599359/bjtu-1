@@ -1,0 +1,61 @@
+正在加载模型: checkpoints_2heads/best_model.pt
+数据集加载完成:
+  总字符数: 1,115,394
+  词汇表大小: 65
+  训练集大小: 1,003,854
+  验证集大小: 111,540
+  字符集示例: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G']
+
+模型配置:
+  dataset: tiny_shakespeare
+  data_dir: data
+  seq_len: 128
+  batch_size: 64
+  num_workers: 0
+  d_model: 256
+  n_heads: 2
+  d_ff: 1024
+  n_layers: 4
+  dropout: 0.1
+  epochs: 30
+  learning_rate: 0.0003
+  min_lr: 1e-06
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  save_dir: checkpoints_2heads
+  save_every: 10
+
+生成 3 个文本样本:
+================================================================================
+
+样本 1:
+--------------------------------------------------------------------------------
+ROMEO:
+Madam, which art thou, anon.
+Take the tempt thousand prepare to my blood?
+
+JULIET:
+If I could not say so soon, now I do with fevithithit!
+Lon thinoune couse de me lon gre te waldoranouse de n se Kin hor pine Waly thin the, me ther, ithede 'lyous.
+Ty, ous be I te at me an tous thinon me, ke by se or
+--------------------------------------------------------------------------------
+
+样本 2:
+--------------------------------------------------------------------------------
+ROMEO:
+My noble lord, that mistress have merry soul,
+To the grace of them are not the matience of
+the root, and thou dost not so tritetenat; the wime ichyouppour
+Sone, ade? mat, maninone Maran on'?
+Frire:-bume it: bume the fere the le te; t wins me winge s t, Rous, ble, he athin maly; thine we we wine abe
+--------------------------------------------------------------------------------
+
+样本 3:
+--------------------------------------------------------------------------------
+ROMEO:
+But as a wisdom apprehends, I thought I do play
+This foolish victory,
+That she might be such pity his lawful sight,
+And willloth ariespe indouthith hine ter wined ine us thin s in e thifus alyinithings alyonedin fong ped an med th thinged thin t, aly, s winin ongofus blinger aly, s
+Tis aly I the in
+--------------------------------------------------------------------------------

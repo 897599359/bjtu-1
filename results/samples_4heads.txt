@@ -1,0 +1,56 @@
+正在加载模型: checkpoints/best_model.pt
+数据集加载完成:
+  总字符数: 1,115,394
+  词汇表大小: 65
+  训练集大小: 1,003,854
+  验证集大小: 111,540
+  字符集示例: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G']
+
+模型配置:
+  dataset: tiny_shakespeare
+  data_dir: data
+  seq_len: 128
+  batch_size: 64
+  num_workers: 0
+  d_model: 256
+  n_heads: 4
+  d_ff: 1024
+  n_layers: 4
+  dropout: 0.1
+  epochs: 30
+  learning_rate: 0.0003
+  min_lr: 1e-06
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  save_dir: checkpoints
+  save_every: 10
+
+生成 3 个文本样本:
+================================================================================
+
+样本 1:
+--------------------------------------------------------------------------------
+ROMEO:
+There is this the duke like to their scopes;
+Thou hast charged thy babes and but by the land;
+For once I should vex him as I thevelith garaboush dedamoure minoricous med, moreved, me wand th th tis arerele toure tous as in abamit thenouthexenout th, th aned me th, then s athe an ous t out! thind an
+--------------------------------------------------------------------------------
+
+样本 2:
+--------------------------------------------------------------------------------
+ROMEO:
+Nay, look on him, by the pride, and to yourself:
+Never man will not shame a scrown weight of the city
+of kings, which of your igranoursiesiesthande angest an s y, mout inges ath ounghingex br t, th, waur uper alexes y, thexes bour y's agr s aleser adinghextigh, agrrages s ather auman inin bexes chi
+--------------------------------------------------------------------------------
+
+样本 3:
+--------------------------------------------------------------------------------
+ROMEO:
+As she shall forth. Now, good Camillo,
+Since with the prince to the morning's purpose.
+
+Nurse:
+Good night, nor shall I see mpeeerveeee: mballllleese t t nd--whervecucechandlsendit at, ut th it mit ballllly t ondle t me wit t thext thatat tch, tchat t t the t t me y; baly.
+STy: ataume t wan hilichiv
+--------------------------------------------------------------------------------

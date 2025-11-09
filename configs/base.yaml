@@ -1,0 +1,27 @@
+# Decoder-Only Transformer配置
+
+# 数据集
+dataset: tiny_shakespeare
+data_dir: data
+seq_len: 128
+batch_size: 64
+num_workers: 0
+
+# 模型架构
+d_model: 256
+n_heads: 4
+d_ff: 1024
+n_layers: 4
+dropout: 0.1
+
+# 训练参数
+epochs: 30
+learning_rate: 0.0003
+min_lr: 0.000001
+weight_decay: 0.01
+max_grad_norm: 1.0
+
+# 保存
+save_dir: checkpoints
+save_every: 10
+
